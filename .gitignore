@@ -1,0 +1,31 @@
+# Maven
+/target/
+**/target/
+
+# NetBeans
+nbproject/private/
+build/
+/dist/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+# Logs e temporários
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# GlassFish domain libs (se copiar driver localmente)
+# Ajuste conforme seu ambiente
+# glassfish/domains/domain1/lib/
