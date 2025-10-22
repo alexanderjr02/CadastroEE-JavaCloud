@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: README do projeto
+    url: https://github.com/alexanderjr02/CadastroEE-JavaCloud#readme
+    about: Leia as instruções de ambiente, build e deploy.
