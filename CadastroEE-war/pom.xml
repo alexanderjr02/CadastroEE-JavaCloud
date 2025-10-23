@@ -18,6 +18,15 @@
             <version>${jakartaee.version}</version>
             <scope>provided</scope>
         </dependency>
+        
+        <!-- Dependência do módulo EJB apenas para compilação; não embalar no WAR -->
+        <dependency>
+            <groupId>br.com.cadastroee</groupId>
+            <artifactId>CadastroEE-ejb</artifactId>
+            <version>${project.parent.version}</version>
+            <type>ejb</type>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
