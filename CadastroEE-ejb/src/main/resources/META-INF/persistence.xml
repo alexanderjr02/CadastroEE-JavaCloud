@@ -5,7 +5,11 @@
     <persistence-unit name="CadastroPU" transaction-type="JTA">
         <jta-data-source>jdbc/CadastroDS</jta-data-source>
         <properties>
-            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+            <!-- Geração automática de schema para o HSQLDB em memória -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.schema-generation.create-source" value="metadata"/>
+            
+            <!-- Log padrão -->
             <property name="eclipselink.logging.level" value="INFO"/>
         </properties>
     </persistence-unit>
