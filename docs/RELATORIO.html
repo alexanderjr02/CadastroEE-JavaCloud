@@ -2,63 +2,92 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <title>Relatório do Projeto CadastroEE</title>
+  <title>Relatório Discente de Acompanhamento — CadastroEE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <style>
-    body { font-family: Arial, Helvetica, sans-serif; margin: 40px; }
-    h1, h2, h3 { color: #333; }
-    pre, code { background: #f6f8fa; padding: 2px 4px; border-radius: 4px; }
-    .content { max-width: 900px; margin: 0 auto; }
+    :root { --fg:#222; --muted:#666; --primary:#0a7; }
+    body { font-family: Arial, Helvetica, sans-serif; color:var(--fg); margin: 40px; }
+    header { display:flex; align-items:center; gap:24px; margin-bottom:24px; }
+    header img { height:64px; }
+    h1 { margin: 0; font-size: 22px; }
+    .meta { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    h2 { margin-top: 28px; border-bottom: 2px solid #eee; padding-bottom: 6px; }
+    pre { background:#f6f8fa; padding:12px; border-radius:6px; overflow:auto; font-size: 12px; }
+    code { font-family: Consolas, Menlo, Monaco, monospace; }
+    a { color: var(--primary); text-decoration: none; }
+    .footer { margin-top: 32px; font-size: 12px; color: var(--muted); }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-  <div class="content" id="app"></div>
-  <script>
-    const md = `# Relatório do Projeto CadastroEE
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Est%C3%A1cio_logo.png" alt="Logo Estácio">
+    <div>
+      <h1>Relatório Discente de Acompanhamento</h1>
+      <div class="meta">
+        Universidade: Estácio — Campus: Gama — Curso: Desenvolvimento Back-End Corporativo com Java e Cloud<br>
+        Disciplina: Trabalho Prático | DGT2811 — Turma: DGT2811 (3º semestre) — Semestre letivo: 3º semestre<br>
+        Integrantes da prática: Alexander Junior
+      </div>
+    </div>
+  </header>
 
-## 1. Descrição
-Implementação de sistema cadastral web usando Servlets, JSP, JPA, EJB e Bootstrap, empacotado em EAR para GlassFish.
+  <section>
+    <h2>Título da Prática</h2>
+    <p>CadastroEE: aplicação web Jakarta EE (Servlets, EJB, JPA, JSP, Bootstrap) empacotada em EAR e implantada no Payara/GlassFish.</p>
+  </section>
 
-## 2. Arquitetura
-- Módulos: EJB, WAR e EAR (Maven multi-módulo)
-- Camadas: Persistência (JPA), Negócio (EJB), Web (Servlets/JSP)
-- Banco: SQL Server, datasource JTA \`jdbc/CadastroDS\`
+  <section>
+    <h2>Objetivo da Prática</h2>
+    <p>Desenvolver um sistema cadastral de produtos com camadas Web (Servlets/JSP), Negócio (EJB) e Persistência (JPA),
+       configurando o datasource JTA, empacotando em EAR, fazendo deploy no servidor de aplicações e validando CRUD.</p>
+  </section>
 
-## 3. Tecnologias
-- Jakarta EE 10 (JPA, EJB, Servlets)
-- GlassFish 7
-- SQL Server (mssql-jdbc)
-- Bootstrap 5
-- Maven
+  <section>
+    <h2>Repositório no Git</h2>
+    <p>O projeto está publicado em: <a href="https://github.com/alexanderjr02/CadastroEE-JavaCloud.git">https://github.com/alexanderjr02/CadastroEE-JavaCloud.git</a></p>
+  </section>
 
-## 4. Código relevante
-- Entidade \`Produto\` e \`ProdutoService\` (CRUD)
-- Servlets: listar, novo, editar, excluir
-- JSPs: \`list.jsp\` e \`form.jsp\`
+  <section>
+    <h2>Todos os Códigos Solicitados</h2>
+    <p>Os principais artefatos implementados (ver repositório para conteúdo completo):</p>
+    <ul>
+      <li>Serviços EJB: <code>CadastroEE-ejb/src/main/java/br/com/cadastroee/ejb/ProdutoService.java</code></li>
+      <li>Entidade JPA: <code>CadastroEE-ejb/src/main/java/br/com/cadastroee/model/Produto.java</code></li>
+      <li>Servlets: <code>ProdutoListServlet</code>, <code>ProdutoCreateServlet</code>, <code>ProdutoEditServlet</code>, <code>ProdutoDeleteServlet</code></li>
+      <li>JSPs: <code>CadastroEE-war/src/main/webapp/WEB-INF/jsp/list.jsp</code> e <code>form.jsp</code></li>
+      <li>Configuração JPA: <code>CadastroEE-ejb/src/main/resources/META-INF/persistence.xml</code> (datasource JTA <code>jdbc/CadastroDS</code>)</li>
+      <li>Empacotamento EAR: <code>CadastroEE-ear/pom.xml</code> define módulos e <code>contextRoot</code></li>
+    </ul>
+  </section>
 
-## 5. Resultados de testes
-- Listagem: OK (após deploy e dados existentes)
-- Inclusão: OK (formulário → persistência)
-- Edição: OK (carrega dados e salva)
-- Exclusão: OK (remove registro)
+  <section>
+    <h2>Resultados da Execução</h2>
+    <p>Após o deploy em <code>http://localhost:8080/cadastroee/</code>:
+    <ul>
+      <li>Listagem: <code>/cadastroee/produtos</code> carrega sem erro; em HSQLDB in-memory, o schema é criado automaticamente.</li>
+      <li>Inclusão: formulário em <code>/cadastroee/produtos/novo</code> persiste registros via EJB/JPA.</li>
+      <li>Edição: <code>/cadastroee/produtos/editar</code> carrega o produto e salva alterações.</li>
+      <li>Exclusão: <code>/cadastroee/produtos/excluir</code> remove o registro e volta à listagem.</li>
+    </ul>
+    </p>
+  </section>
 
-Inclua aqui prints das telas pós-deploy no GlassFish.
+  <section>
+    <h2>Análise e Conclusão</h2>
+    <h3>Como o framework Bootstrap é utilizado?</h3>
+    <p>O Bootstrap é referenciado nas páginas JSP (via CDN) para estilizar tabelas, formulários e componentes,
+       fornecendo classes utilitárias e de layout que agilizam a construção de UI responsiva.</p>
+    <h3>Por que o Bootstrap garante a independência estrutural do HTML?</h3>
+    <p>Porque separa conteúdo (HTML) de apresentação (CSS/JS). O HTML mantém a semântica,
+       enquanto o estilo/comportamento é aplicado por classes CSS e plugins JS do Bootstrap;
+       trocar temas ou ajustar estilos não exige mudar a estrutura dos elementos.</p>
+    <h3>Qual a relação entre o Bootstrap e a responsividade da página?</h3>
+    <p>O Bootstrap provê um grid responsivo e utilitários de espaçamento/visibilidade que se adaptam via media queries.
+       Assim, o layout reorganiza colunas e componentes conforme a largura da tela, mantendo boa experiência em desktop e mobile.</p>
+  </section>
 
-## 6. Conclusões
-- Jakarta EE facilita separação de camadas e uso de padrões corporativos
-- EJB simplifica transações e acesso ao EntityManager
-- Bootstrap agiliza o layout das páginas JSP
-
-## 7. Próximos passos
-- Adicionar validações e mensagens de erro nas JSPs
-- Acrescentar paginação/ordenação na listagem
-- Criar testes de integração com Arquillian (opcional)
-`;
-    document.getElementById('app').innerHTML = marked.parse(md);
-    // Aciona impressão automática quando rodar headless
-    setTimeout(() => { window.print && window.print(); }, 500);
-  </script>
+  <div class="footer">
+    <p>Documento gerado para acompanhamento da prática — Estácio | Campus Gama | DGT2811 — 3º semestre.</p>
+  </div>
 </body>
 </html>
