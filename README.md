@@ -83,4 +83,6 @@ Para exportar em PDF, você pode abrir no Word/LibreOffice e salvar como PDF.
 ## Observações
 - O EAR define o `contextRoot` como `cadastroee`.
 - O `persistence.xml` está em `CadastroEE-ejb/src/main/resources/META-INF/persistence.xml`.
+- Em desenvolvimento, a JPA está configurada para criar o schema automaticamente (schema-generation=create).
+- Para testes rápidos, use um pool HSQLDB in-memory; para produção, configure o pool para SQL Server.
 - JSP usa scriptlets para simplicidade (evita dependência JSTL). Opcionalmente, você pode usar JSTL.

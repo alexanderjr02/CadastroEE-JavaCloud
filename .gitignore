@@ -1,6 +1,7 @@
 # Maven
 /target/
 **/target/
+**/effective-pom
 
 # NetBeans
 nbproject/private/
