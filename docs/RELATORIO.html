@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Relatório do Projeto CadastroEE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; margin: 40px; }
+    h1, h2, h3 { color: #333; }
+    pre, code { background: #f6f8fa; padding: 2px 4px; border-radius: 4px; }
+    .content { max-width: 900px; margin: 0 auto; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="content" id="app"></div>
+  <script>
+    const md = `# Relatório do Projeto CadastroEE
+
+## 1. Descrição
+Implementação de sistema cadastral web usando Servlets, JSP, JPA, EJB e Bootstrap, empacotado em EAR para GlassFish.
+
+## 2. Arquitetura
+- Módulos: EJB, WAR e EAR (Maven multi-módulo)
+- Camadas: Persistência (JPA), Negócio (EJB), Web (Servlets/JSP)
+- Banco: SQL Server, datasource JTA \`jdbc/CadastroDS\`
+
+## 3. Tecnologias
+- Jakarta EE 10 (JPA, EJB, Servlets)
+- GlassFish 7
+- SQL Server (mssql-jdbc)
+- Bootstrap 5
+- Maven
+
+## 4. Código relevante
+- Entidade \`Produto\` e \`ProdutoService\` (CRUD)
+- Servlets: listar, novo, editar, excluir
+- JSPs: \`list.jsp\` e \`form.jsp\`
+
+## 5. Resultados de testes
+- Listagem: OK (após deploy e dados existentes)
+- Inclusão: OK (formulário → persistência)
+- Edição: OK (carrega dados e salva)
+- Exclusão: OK (remove registro)
+
+Inclua aqui prints das telas pós-deploy no GlassFish.
+
+## 6. Conclusões
+- Jakarta EE facilita separação de camadas e uso de padrões corporativos
+- EJB simplifica transações e acesso ao EntityManager
+- Bootstrap agiliza o layout das páginas JSP
+
+## 7. Próximos passos
+- Adicionar validações e mensagens de erro nas JSPs
+- Acrescentar paginação/ordenação na listagem
+- Criar testes de integração com Arquillian (opcional)
+`;
+    document.getElementById('app').innerHTML = marked.parse(md);
+    // Aciona impressão automática quando rodar headless
+    setTimeout(() => { window.print && window.print(); }, 500);
+  </script>
+</body>
+</html>
